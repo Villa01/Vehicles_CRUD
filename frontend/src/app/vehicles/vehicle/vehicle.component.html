@@ -1,0 +1,27 @@
+<td class="col">
+    <input type="text" class="form-control" [(ngModel)] = "vehicle.placa">
+</td>
+<td class="col">
+    <input type="text" class="form-control" [(ngModel)] = "vehicle.marca">
+</td>
+<td class="col">
+    <input type="text" class="form-control" [(ngModel)] = "vehicle.modelo">
+</td>
+<td class="col">
+    <input type="text" class="form-control" [(ngModel)] = "vehicle.serie">
+</td>
+<td class="col">
+    <input type="text" class="form-control" [(ngModel)] = "vehicle.color">
+</td>
+<td>
+    <button 
+        class="btn btn-danger"
+        (click)="deleteVehicle()"
+    ><i class="bi bi-trash"></i></button>
+</td>
+<td>
+    <button 
+        class="btn btn-primary"
+        (click)="updateVehicle()"
+    ><i class="bi bi-pen"></i></button>
+</td>

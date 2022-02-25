@@ -1,0 +1,64 @@
+<h2>Agregar Vehiculo</h2>
+<div class="col">
+    <div class="mb-3">
+        <label for="placa" class="form-label">Placa</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="placa" 
+            aria-describedby="placa" 
+            [(ngModel)]="placa" 
+            required
+            placeholder="Placa"
+        >
+    </div>
+    <div class="mb-3">
+        <label for="marca" class="form-label">Marca</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="marca" 
+            aria-describedby="marca" 
+            [(ngModel)]="marca"
+            required
+            placeholder="Marca"
+        >
+    </div>
+    <div class="mb-3">
+        <label for="modelo" class="form-label">Modelo</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="modelo" 
+            aria-describedby="modelo" 
+            [(ngModel)]="modelo"
+            required
+            placeholder="Modelo"
+        >
+    </div>
+    <div class="mb-3">
+        <label for="serie" class="form-label">Serie</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="serie" 
+            aria-describedby="serie" 
+            [(ngModel)]="serie"
+            required
+            placeholder="Serie"
+        >
+    </div>
+    <div class="mb-3">
+        <label for="color" class="form-label">Color</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="color" 
+            aria-describedby="color" 
+            [(ngModel)]="color"
+            required
+            placeholder="Color"
+        >
+    </div>
+    <button type="button" (click) = "addVehicle()" class="btn btn-primary">Enviar</button>
+</div>

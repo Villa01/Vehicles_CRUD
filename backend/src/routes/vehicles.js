@@ -9,9 +9,9 @@ const router = express.Router();
 
 router.post('/add', async (req, res) => {
     const { placa, modelo, serie, color, marca } = { ...req.body };
+
     try {
         const query = `INSERT INTO vehiculos ( placa, modelo, marca, serie, color ) VALUES ( '${placa}', '${modelo}', '${marca}', '${serie}', '${color}' );`;
-
         await pool.query(query);
 
         res.status(201);
@@ -26,7 +26,6 @@ router.post('/add', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const query = `SELECT * FROM vehiculos;`;
-        console.log(query)
         pool.query(query, ( err, data ) => {
             if ( err ) {
                 console.error(err);
@@ -49,7 +48,7 @@ router.put('/:placa', async (req, res) => {
     const { placa } = req.params;
     const { marca, modelo, serie, color } = req.body;
     const query = `UPDATE vehiculos SET placa = '${placa}', marca = '${marca}', modelo = '${modelo}', serie = '${serie}', color = '${color}'
-    WHERE placa = ${placa};`;
+    WHERE placa = '${placa}';`;
     await pool.query(query, ( err ) => {
         if ( err ) {
             console.error(err);
@@ -64,6 +63,8 @@ router.put('/:placa', async (req, res) => {
 
 router.delete('/:placa', async (req, res) => {
     const { placa } = req.params;
+    console.log(placa)
+
     if (!placa) {
         res.status(404)
         return;
