@@ -1,16 +1,26 @@
-
 import mysql from 'mysql';
+import { promisify } from 'util'
 
 import 'dotenv/config'
 
 // Connection to MySQL
-const connection = mysql.createConnection(
-    {
-        host: process.env.HOST,
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        database: process.env.DATABASE
-    }
-);
+const pool = mysql.createPool({
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
+});
 
-export default connection;
+pool.getConnection((err, connection) => {
+    if(err) {
+        console.log(err.message);
+    }
+    if (connection) {
+        connection.release();
+        console.log('Mysql connected')
+    }
+});
+
+promisify(pool.query);
+
+export default pool;
