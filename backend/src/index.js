@@ -1,19 +1,21 @@
 
 import express from 'express';
-import { connectToDB } from './database';
-import { homeHandler } from './crud.routes'
+import morgan from 'morgan';
+import router from './routes/vehicles.js';
 
-
+ // Settings 
 const app = express();
 
-const port = 5000;
+app.set('port', process.env.PORT || 5000);
 
-connectToDB();
+// Middlewares
+app.use(morgan('dev'));
+app.use(express.json());
 
 // Routes
+app.use( '/vehicles', router );
 
-app.use('/', homeHandler);
 
-app.listen(port, () => {
-    console.log(`Sever on port ${port}`);
+app.listen(app.get('port'), () => {
+    console.log(`Sever on port ${app.get('port')}`);
 })
