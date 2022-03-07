@@ -11,7 +11,8 @@ router.post('/add', async (req, res) => {
     const { placa, modelo, serie, color, marca } = { ...req.body };
 
     try {
-        const query = `INSERT INTO vehiculos ( placa, modelo, marca, serie, color ) VALUES ( '${placa}', '${modelo}', '${marca}', '${serie}', '${color}' );`;
+        const query = `INSERT INTO vehiculos ( placa, modelo, marca, serie, color )
+         VALUES ( '${placa}', '${modelo}', '${marca}', '${serie}', '${color}' );`;
         await pool.query(query);
 
         res.status(201);
@@ -47,7 +48,8 @@ router.get('/', async (req, res) => {
 router.put('/:placa', async (req, res) => {
     const { placa } = req.params;
     const { marca, modelo, serie, color } = req.body;
-    const query = `UPDATE vehiculos SET placa = '${placa}', marca = '${marca}', modelo = '${modelo}', serie = '${serie}', color = '${color}'
+    const query = `UPDATE vehiculos SET placa = '${placa}', marca = '${marca}', modelo = '${modelo}',
+     serie = '${serie}', color = '${color}'
     WHERE placa = '${placa}';`;
     await pool.query(query, ( err ) => {
         if ( err ) {
